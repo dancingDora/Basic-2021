@@ -6,28 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/Basic.cpp
-cctype
--
-iostream
--
-string
--
-exp.h
-/Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/exp.h
-parser.h
-/Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/parser.h
-program.h
-/Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/program.h
-../StanfordCPPLib/error.h
-/Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/error.h
-../StanfordCPPLib/tokenscanner.h
-/Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/tokenscanner.h
-../StanfordCPPLib/simpio.h
-/Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/simpio.h
-../StanfordCPPLib/strlib.h
-/Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/strlib.h
-
 /Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/evalstate.h
 string
 -
@@ -38,31 +16,29 @@ string
 evalstate.h
 /Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/evalstate.h
 
-/Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/parser.h
+/Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/parser.cpp
+iostream
+-
 string
 -
 exp.h
 /Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/exp.h
-../StanfordCPPLib/tokenscanner.h
-/Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/tokenscanner.h
-
-/Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/program.h
-string
--
-statement.h
-/Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/statement.h
-map
--
-
-/Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/statement.h
-evalstate.h
-/Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/evalstate.h
-exp.h
-/Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/exp.h
-../StanfordCPPLib/tokenscanner.h
-/Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/tokenscanner.h
 parser.h
 /Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/parser.h
+../StanfordCPPLib/error.h
+/Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/error.h
+../StanfordCPPLib/strlib.h
+/Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/strlib.h
+../StanfordCPPLib/tokenscanner.h
+/Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/tokenscanner.h
+
+/Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/parser.h
+string
+-
+exp.h
+/Users/luyifan/Downloads/BASIC-Interpreter-main/Basic/exp.h
+../StanfordCPPLib/tokenscanner.h
+/Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/tokenscanner.h
 
 /Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/error.h
 string
@@ -99,10 +75,6 @@ stack.h
 /Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/private/main.h
 
 /Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/private/tokenpatch.h
-
-/Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/simpio.h
-string
--
 
 /Users/luyifan/Downloads/BASIC-Interpreter-main/StanfordCPPLib/stack.h
 vector.h

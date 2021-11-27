@@ -25,6 +25,7 @@ Program::~Program() {
 
 void Program::clear() {
     mp.clear();
+    mp1.clear();
 }
 
 void Program::addSourceLine(int lineNumber, string line) {
@@ -44,7 +45,7 @@ void Program::setParsedStatement(int lineNumber, Statement *stmt) {
 }
 
 Statement *Program::getParsedStatement(int lineNumber) {
-    return NULL;  // Replace this stub with your own code
+    return mp1[lineNumber];
 }
 
 int Program::getFirstLineNumber() {
@@ -58,4 +59,9 @@ int Program::getNextLineNumber(int lineNumber) {
     auto it=mp.upper_bound(lineNumber);
     if(it==mp.end())return -1;
     return it->first;
+}
+
+bool Program::count(int lineNumber) {
+    if(!mp.count(lineNumber))return 0;
+    else return 1;
 }

@@ -9,6 +9,7 @@
 
 #include <string>
 #include "statement.h"
+#include "../StanfordCPPLib/simpio.h"
 
 using namespace std;
 
@@ -35,26 +36,44 @@ GOTO::GOTO(TokenScanner &scanner) {
 };
 
 void GOTO::execute(EvalState &state) {
-
+    state.lineNum = num;
 }
 
 LET::LET(TokenScanner &scanner) {
     name = scanner.nextToken();
     scanner.nextToken();
     exp = parseExp(scanner);
+    if (name == "LET")cout << "SYNTAX ERROR" << endl;
 }
 
-void LET::execute(EvalState &state) {};
+void LET::execute(EvalState &state) {
+    state.setValue(name, exp->eval(state));
+};
 
 INPUT::INPUT(TokenScanner &scanner) {
     name = scanner.nextToken();
 };
 
-void INPUT::execute(EvalState &state) {};
+void INPUT::execute(EvalState &state) {
+    cout << " ? ";
+    string tmp1;
+    int tmp;
+    tmp1 = getLine();
+    if (((tmp1[0] < '0' || tmp1[0] > '9') && tmp1[0] != '-') ||
+        (tmp1.length() > 1 && (tmp1[1] < '0' || tmp1[1] > '9'))) {
+        cout << "INVALID NUMBER" << endl;
+        execute(state);
+    } else {
+        tmp = stoi(tmp1);
+        state.setValue(name, tmp);
+    }
+};
 
 END::END() {};
 
-void END::execute(EvalState &state) {};
+void END::execute(EvalState &state) {
+    state.lineNum = -1;
+};
 
 IF::IF(TokenScanner &scanner) {
     exp_l = readE(scanner);
@@ -66,11 +85,27 @@ IF::IF(TokenScanner &scanner) {
     n = stoi(tmp);
 };
 
-void IF::execute(EvalState &state) {};
+void IF::execute(EvalState &state) {
+    int int_l = exp_l->eval(state);
+    int int_r = exp_r->eval(state);
+    bool flag = 0;
+    if (cmp == ">") {
+        if (int_l > int_r)flag = 1;
+    }
+    if (cmp == "<") {
+        if (int_l < int_r)flag = 1;
+    }
+    if (cmp == "=") {
+        if (int_l == int_r)flag = 1;
+    }
+    if (flag == 1) state.lineNum = n;
+};
 
 PRINT::PRINT(TokenScanner &scanner) {
     exp = parseExp(scanner);
 }
 
-void PRINT::execute(EvalState &state) {};
+void PRINT::execute(EvalState &state) {
+    cout << exp->eval(state) << endl;
+};
 

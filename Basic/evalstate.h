@@ -55,6 +55,7 @@ public:
 
     void setValue(std::string var, int value);
 
+    void clear();
 /*
  * Method: getValue
  * Usage: int value = state.getValue(var);
@@ -72,6 +73,8 @@ public:
  */
 
     bool isDefined(std::string var);
+
+    int lineNum;
 
 private:
 

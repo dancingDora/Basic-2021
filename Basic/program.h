@@ -136,6 +136,8 @@ public:
 
     int getNextLineNumber(int lineNumber);
 
+    bool count(int lineNumber);
+
 private:
 
 // Fill this in with whatever types and instance variables you need

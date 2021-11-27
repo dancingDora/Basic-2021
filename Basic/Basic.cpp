@@ -27,15 +27,14 @@ void processLine(string line, Program &program, EvalState &state);
 int main() {
     EvalState state;
     Program program;
-    cout << "Stub implementation of BASIC" << endl;
     while (true) {
         try {
             string input = getLine();
             if (input.empty())
-                return 0;
+                continue;
             processLine(input, program, state);
         } catch (ErrorException &ex) {
-            cerr << "Error: " << ex.getMessage() << endl;
+            cout  << ex.getMessage() << endl;
         }
     }
     return 0;
@@ -85,19 +84,45 @@ void processLine(string line, Program &program, EvalState &state) {
         if (tmp1 == "END") {
             stmt = new END();
         };
+        if(tmp1==""){
+            program.removeSourceLine(lineNumber);
+            return;
+        }
         program.setParsedStatement(lineNumber, stmt);
         program.addSourceLine(lineNumber, line);
     };
-    if (tmp == "LET") {};
-    if (tmp == "PRINT") {};
-    if (tmp == "INPUT") {};
-    if (tmp == "RUN") {};
+    if (tmp == "LET") {
+        Statement *stmt = new LET(scanner);
+        stmt->execute(state);
+    };
+    if (tmp == "PRINT") {
+        Statement *stmt = new PRINT(scanner);
+        stmt->execute(state);
+    };
+    if (tmp == "INPUT") {
+        Statement *stmt = new INPUT(scanner);
+        stmt->execute(state);
+    };
+    if (tmp == "RUN") {
+        for (state.lineNum = program.getFirstLineNumber(); state.lineNum != -1;) {
+            Statement *stmt = program.getParsedStatement(state.lineNum);
+            state.lineNum = program.getNextLineNumber(state.lineNum);
+            stmt->execute(state);
+            if(state.lineNum!=-1&&!program.count(state.lineNum)){
+                cout<<"LINE NUMBER ERROR"<<endl;
+                state.lineNum=-1;
+            }
+        }
+    };
     if (tmp == "LIST") {
         for (int num = program.getFirstLineNumber(); num != -1; num = program.getNextLineNumber(num)) {
             cout << program.getSourceLine(num) << endl;
         }
     };
-    if (tmp == "CLEAR") {};
+    if (tmp == "CLEAR") {
+        program.clear();
+        state.clear();
+    };
     if (tmp == "QUIT") exit(0);
 }
 

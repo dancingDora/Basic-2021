@@ -31,6 +31,10 @@ int EvalState::getValue(string var) {
     return symbolTable.get(var);
 }
 
+void EvalState::clear() {
+    symbolTable.clear();
+}
+
 bool EvalState::isDefined(string var) {
     return symbolTable.containsKey(var);
 }
